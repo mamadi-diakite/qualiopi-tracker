@@ -1,2 +1,14 @@
+global using System.Security.Claims;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.IdentityModel.JsonWebTokens;
+global using Microsoft.IdentityModel.Tokens;
+global using QualiopiTracker.Api.Auth;
+global using QualiopiTracker.Application;
+global using QualiopiTracker.Application.Auth;
+global using QualiopiTracker.Application.Contracts.Auth;
+global using QualiopiTracker.Application.Contracts.Providers;
+global using QualiopiTracker.Application.Providers;
+global using QualiopiTracker.Domain;
 global using QualiopiTracker.Infrastructure;

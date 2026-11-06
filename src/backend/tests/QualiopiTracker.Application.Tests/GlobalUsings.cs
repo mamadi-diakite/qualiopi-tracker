@@ -1,0 +1,8 @@
+global using Microsoft.Extensions.DependencyInjection;
+global using QualiopiTracker.Application.Auth;
+global using QualiopiTracker.Application.Contracts.Auth;
+global using QualiopiTracker.Application.Contracts.Providers;
+global using QualiopiTracker.Application.Providers;
+global using QualiopiTracker.Application.Security;
+global using QualiopiTracker.Application.Users;
+global using QualiopiTracker.Domain;

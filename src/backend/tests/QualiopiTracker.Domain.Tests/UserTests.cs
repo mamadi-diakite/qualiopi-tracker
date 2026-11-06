@@ -35,4 +35,34 @@ public sealed class UserTests
             () => new User(ProviderId, "a@example.com", "Claire", "hash", UserRole.Member,
                 DateTime.SpecifyKind(TestDates.Now, DateTimeKind.Local))).ParamName);
     }
+
+    [Theory]
+    [InlineData("claire@example.com", true)]
+    [InlineData("claire@", false)]
+    [InlineData(null, false)]
+    public void Is_valid_email_matches_the_constructor_rule(string? email, bool expected)
+    {
+        Assert.Equal(expected, User.IsValidEmail(email));
+    }
+
+    [Fact]
+    public void Change_password_replaces_the_hash()
+    {
+        var user = new User(ProviderId, "claire@example.com", "Claire", "old-hash", UserRole.Member, TestDates.Now);
+
+        user.ChangePassword("new-hash");
+
+        Assert.Equal("new-hash", user.PasswordHash);
+    }
+
+    [Fact]
+    public void Change_password_rejects_a_blank_hash()
+    {
+        var user = new User(ProviderId, "claire@example.com", "Claire", "old-hash", UserRole.Member, TestDates.Now);
+
+        var error = Assert.Throws<ArgumentException>(() => user.ChangePassword(" "));
+
+        Assert.Equal("passwordHash", error.ParamName);
+        Assert.Equal("old-hash", user.PasswordHash);
+    }
 }
