@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/QualiopiTracker.Api/QualiopiTracker.Api.csproj" />
+    <Project Path="src/QualiopiTracker.Application.Contracts/QualiopiTracker.Application.Contracts.csproj" />
+    <Project Path="src/QualiopiTracker.Application/QualiopiTracker.Application.csproj" />
+    <Project Path="src/QualiopiTracker.Domain/QualiopiTracker.Domain.csproj" />
+    <Project Path="src/QualiopiTracker.Infrastructure/QualiopiTracker.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/QualiopiTracker.Api.IntegrationTests/QualiopiTracker.Api.IntegrationTests.csproj" />
+    <Project Path="tests/QualiopiTracker.Application.Tests/QualiopiTracker.Application.Tests.csproj" />
+  </Folder>
+</Solution>

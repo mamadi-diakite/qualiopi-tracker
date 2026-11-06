@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\QualiopiTracker.Domain\QualiopiTracker.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
