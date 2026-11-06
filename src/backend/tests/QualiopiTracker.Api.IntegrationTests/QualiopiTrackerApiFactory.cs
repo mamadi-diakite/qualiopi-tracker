@@ -15,10 +15,12 @@ public class QualiopiTrackerApiFactory : WebApplicationFactory<Program>
 
     protected virtual string SigningKey => TestSigningKey;
 
+    protected virtual string ConnectionString => $"Data Source={_databasePath}";
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment(EnvironmentName);
-        builder.UseSetting("ConnectionStrings:Default", $"Data Source={_databasePath}");
+        builder.UseSetting("ConnectionStrings:Default", ConnectionString);
         builder.UseSetting("Database:ApplyMigrationsOnStartup", "true");
         builder.UseSetting("Database:SeedDemoData", SeedDemoData.ToString());
         builder.UseSetting("Jwt:SigningKey", SigningKey);
@@ -48,4 +50,9 @@ public sealed class ProductionDemoDataApiFactory : QualiopiTrackerApiFactory
 public sealed class MissingSigningKeyApiFactory : QualiopiTrackerApiFactory
 {
     protected override string SigningKey => string.Empty;
+}
+
+public sealed class MissingConnectionStringApiFactory : QualiopiTrackerApiFactory
+{
+    protected override string ConnectionString => string.Empty;
 }
