@@ -12,6 +12,7 @@ import { Shell } from '@qualiopi-tracker/shared/ui';
       <ng-container shellNav>
         @if (user(); as user) {
           <span class="text-slate-600" data-testid="user-name">{{ user.displayName }}</span>
+          <a routerLink="/framework" class="link">Framework</a>
           <a routerLink="/provider" class="link">Provider profile</a>
           <a routerLink="/account/password" class="link">Change password</a>
           <button type="button" class="link" (click)="logOut()">Log out</button>

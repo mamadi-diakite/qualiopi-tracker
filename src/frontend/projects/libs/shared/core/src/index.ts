@@ -5,5 +5,6 @@ export * from './lib/auth/auth.models';
 export * from './lib/auth/auth.service';
 export * from './lib/auth/session.store';
 export * from './lib/forms/form-submission';
+export * from './lib/framework/framework.service';
 export * from './lib/provider/activity-categories';
 export * from './lib/provider/provider.service';
