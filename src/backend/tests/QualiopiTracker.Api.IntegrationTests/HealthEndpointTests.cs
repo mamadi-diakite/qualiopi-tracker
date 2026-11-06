@@ -1,11 +1,6 @@
-using System.Net;
-using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc.Testing;
-
 namespace QualiopiTracker.Api.IntegrationTests;
 
-public sealed class HealthEndpointTests(WebApplicationFactory<Program> factory)
-    : IClassFixture<WebApplicationFactory<Program>>
+public sealed class HealthEndpointTests(QualiopiTrackerApiFactory factory) : IClassFixture<QualiopiTrackerApiFactory>
 {
     [Fact]
     public async Task Get_health_returns_ok_status()

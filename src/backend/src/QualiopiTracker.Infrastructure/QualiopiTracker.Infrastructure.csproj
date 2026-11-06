@@ -4,4 +4,8 @@
     <ProjectReference Include="..\QualiopiTracker.Application\QualiopiTracker.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.*" />
+  </ItemGroup>
+
 </Project>
