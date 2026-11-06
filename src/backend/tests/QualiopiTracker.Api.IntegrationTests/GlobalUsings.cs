@@ -13,6 +13,7 @@ global using Microsoft.IdentityModel.JsonWebTokens;
 global using Microsoft.IdentityModel.Tokens;
 global using QualiopiTracker.Api.Auth;
 global using QualiopiTracker.Application.Contracts.Auth;
+global using QualiopiTracker.Application.Contracts.Framework;
 global using QualiopiTracker.Application.Contracts.Providers;
 global using QualiopiTracker.Domain;
 global using QualiopiTracker.Infrastructure.Persistence;

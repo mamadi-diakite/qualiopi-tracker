@@ -28,6 +28,27 @@ internal sealed class InMemoryUserRepository : IUserRepository
     }
 }
 
+internal sealed class InMemoryProviderIndicatorRepository : IProviderIndicatorRepository
+{
+    public List<ProviderIndicator> Settings { get; } = [];
+
+    public int SaveCount { get; private set; }
+
+    public Task<IReadOnlyList<ProviderIndicator>> ListAsync(Guid providerId, CancellationToken cancellationToken) =>
+        Task.FromResult<IReadOnlyList<ProviderIndicator>>([.. Settings.Where(s => s.ProviderId == providerId)]);
+
+    public Task<ProviderIndicator?> FindAsync(Guid providerId, int indicatorNumber, CancellationToken cancellationToken) =>
+        Task.FromResult(Settings.SingleOrDefault(s => s.ProviderId == providerId && s.IndicatorNumber == indicatorNumber));
+
+    public void Add(ProviderIndicator providerIndicator) => Settings.Add(providerIndicator);
+
+    public Task SaveChangesAsync(CancellationToken cancellationToken)
+    {
+        SaveCount++;
+        return Task.CompletedTask;
+    }
+}
+
 /// <summary>Readable fake: the hash is the password with a prefix.</summary>
 internal sealed class FakePasswordHasher : IPasswordHasher
 {

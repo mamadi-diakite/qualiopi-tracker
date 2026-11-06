@@ -29,6 +29,23 @@ public sealed class DemoDataSeederTests : IDisposable
     }
 
     [Fact]
+    public async Task Seeds_indicator_notes_and_a_not_applicable_reason()
+    {
+        await SeedAsync();
+
+        await using var db = _database.CreateContext();
+        var horizon = await db.Providers.SingleAsync(p => p.Name == "Horizon Skills Academy");
+        var settings = await db.ProviderIndicators.Where(p => p.ProviderId == horizon.Id)
+            .OrderBy(p => p.IndicatorNumber).ToListAsync();
+
+        Assert.Equal([2, 27], settings.Select(s => s.IndicatorNumber));
+        Assert.Null(settings[0].NotApplicableReason);
+        Assert.StartsWith("Results are published", settings[0].Notes);
+        Assert.StartsWith("We deliver every course", settings[1].NotApplicableReason);
+        Assert.Equal(DemoDataSeeder.Providers.Sum(p => p.Indicators.Count), await db.ProviderIndicators.CountAsync());
+    }
+
+    [Fact]
     public async Task Every_demo_account_accepts_the_demo_password()
     {
         await SeedAsync();

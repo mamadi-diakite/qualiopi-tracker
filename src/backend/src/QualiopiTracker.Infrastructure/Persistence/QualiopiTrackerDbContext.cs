@@ -6,6 +6,8 @@ public sealed class QualiopiTrackerDbContext(DbContextOptions<QualiopiTrackerDbC
 
     public DbSet<User> Users => Set<User>();
 
+    public DbSet<ProviderIndicator> ProviderIndicators => Set<ProviderIndicator>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(QualiopiTrackerDbContext).Assembly);
 

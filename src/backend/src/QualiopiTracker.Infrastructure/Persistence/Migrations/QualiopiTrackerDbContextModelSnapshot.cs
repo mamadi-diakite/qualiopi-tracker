@@ -44,6 +44,30 @@ namespace QualiopiTracker.Infrastructure.Persistence.Migrations
                     b.ToTable("Providers", (string)null);
                 });
 
+            modelBuilder.Entity("QualiopiTracker.Domain.ProviderIndicator", b =>
+                {
+                    b.Property<Guid>("ProviderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IndicatorNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NotApplicableReason")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAtUtc")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ProviderId", "IndicatorNumber");
+
+                    b.ToTable("ProviderIndicators", (string)null);
+                });
+
             modelBuilder.Entity("QualiopiTracker.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -84,6 +108,15 @@ namespace QualiopiTracker.Infrastructure.Persistence.Migrations
                     b.HasIndex("ProviderId");
 
                     b.ToTable("Users", (string)null);
+                });
+
+            modelBuilder.Entity("QualiopiTracker.Domain.ProviderIndicator", b =>
+                {
+                    b.HasOne("QualiopiTracker.Domain.Provider", null)
+                        .WithMany()
+                        .HasForeignKey("ProviderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("QualiopiTracker.Domain.User", b =>

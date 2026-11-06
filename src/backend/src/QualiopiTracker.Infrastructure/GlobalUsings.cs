@@ -5,6 +5,7 @@ global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using QualiopiTracker.Application.Framework;
 global using QualiopiTracker.Application.Security;
 global using QualiopiTracker.Application.Users;
 global using QualiopiTracker.Domain;
